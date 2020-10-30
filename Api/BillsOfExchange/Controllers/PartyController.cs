@@ -31,7 +31,6 @@ namespace BillsOfExchange.Controllers
             int skip = PagingUtils.GetSkipedItemsCount(pageSize, pageNumber);
             var result = partyService.Get(pageSize, skip).ToList();
 
-            //return "It works!!!";
             return result;
         }
 
