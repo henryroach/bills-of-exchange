@@ -1,12 +1,21 @@
 {
   "name": "bills-of-exchange-client",
-  "description": "",
-  "main": "index.js",
+  "description": "Test project",
+  "author": "Vitalii Fedchenko",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --hot --open"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "babel-loader": "^8.0.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"

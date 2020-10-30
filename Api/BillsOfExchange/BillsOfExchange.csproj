@@ -1,10 +1,28 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>157f32eb-3998-4f63-ab1b-e842f90b8957</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Data\BillsOfExchange.json" />
+    <Content Remove="Data\Endorsements.json" />
+    <Content Remove="Data\Parties.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Data\BillsOfExchange.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Endorsements.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Parties.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BillsOfExchange.Core\BillsOfExchange.Core.csproj" />
     <ProjectReference Include="..\BillsOfExchange.DataProvider\BillsOfExchange.DataProvider.csproj" />
   </ItemGroup>
 

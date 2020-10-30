@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BillsOfExchange", "BillsOfExchange\BillsOfExchange.csproj", "{7447A951-3578-4704-8546-268840832752}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillsOfExchange.Tests", "BillsOfExchange.Tests\BillsOfExchange.Tests.csproj", "{0454ECCF-D1F3-4131-9C04-08654B723D9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BillsOfExchange.Tests", "BillsOfExchange.Tests\BillsOfExchange.Tests.csproj", "{0454ECCF-D1F3-4131-9C04-08654B723D9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillsOfExchange.DataProvider", "BillsOfExchange.DataProvider\BillsOfExchange.DataProvider.csproj", "{D8A87433-56D9-4090-85E4-F54AA96E6679}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BillsOfExchange.DataProvider", "BillsOfExchange.DataProvider\BillsOfExchange.DataProvider.csproj", "{D8A87433-56D9-4090-85E4-F54AA96E6679}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillsOfExchange.DataProvider.Tests", "BillsOfExchange.DataProvider.Tests\BillsOfExchange.DataProvider.Tests.csproj", "{220DEADC-FAF4-4AC5-AA59-C04EC59726CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BillsOfExchange.DataProvider.Tests", "BillsOfExchange.DataProvider.Tests\BillsOfExchange.DataProvider.Tests.csproj", "{220DEADC-FAF4-4AC5-AA59-C04EC59726CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BillsOfExchange.Core", "BillsOfExchange.Core\BillsOfExchange.Core.csproj", "{DE365EED-AEF3-463A-9705-68F4A463054E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,18 @@ Global
 		{220DEADC-FAF4-4AC5-AA59-C04EC59726CF}.Release|x64.Build.0 = Release|Any CPU
 		{220DEADC-FAF4-4AC5-AA59-C04EC59726CF}.Release|x86.ActiveCfg = Release|Any CPU
 		{220DEADC-FAF4-4AC5-AA59-C04EC59726CF}.Release|x86.Build.0 = Release|Any CPU
+		{DE365EED-AEF3-463A-9705-68F4A463054E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE365EED-AEF3-463A-9705-68F4A463054E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE365EED-AEF3-463A-9705-68F4A463054E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DE365EED-AEF3-463A-9705-68F4A463054E}.Debug|x64.Build.0 = Debug|Any CPU
+		{DE365EED-AEF3-463A-9705-68F4A463054E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DE365EED-AEF3-463A-9705-68F4A463054E}.Debug|x86.Build.0 = Debug|Any CPU
+		{DE365EED-AEF3-463A-9705-68F4A463054E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE365EED-AEF3-463A-9705-68F4A463054E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE365EED-AEF3-463A-9705-68F4A463054E}.Release|x64.ActiveCfg = Release|Any CPU
+		{DE365EED-AEF3-463A-9705-68F4A463054E}.Release|x64.Build.0 = Release|Any CPU
+		{DE365EED-AEF3-463A-9705-68F4A463054E}.Release|x86.ActiveCfg = Release|Any CPU
+		{DE365EED-AEF3-463A-9705-68F4A463054E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
