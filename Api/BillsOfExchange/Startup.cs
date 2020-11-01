@@ -23,9 +23,11 @@ namespace BillsOfExchange
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddOptions();
             services.AddControllers();
             services.AddLogging();
             services.AddAutofac(ConfigureContainer);
+            services.AddSwaggerGen();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -33,7 +35,8 @@ namespace BillsOfExchange
             builder.RegisterType<LogInterceptor>();
 
             builder.RegisterType<PartyRepository>().As<IPartyRepository>().EnableInterfaceInterceptors();
-            builder.RegisterType<BillOfExchangeRepository>().As<IBillOfExchangeRepository>().EnableInterfaceInterceptors();
+            builder.RegisterType<BillOfExchangeRepository>().As<IBillOfExchangeRepository>()
+                .EnableInterfaceInterceptors();
             builder.RegisterType<EndorsementRepository>().As<IEndorsementRepository>().EnableInterfaceInterceptors();
 
             builder.RegisterType<BillsOfExchangeService>().As<IBillsOfExchangeService>();
@@ -50,14 +53,18 @@ namespace BillsOfExchange
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder => {
+                builder.AllowAnyOrigin();
+                builder.AllowAnyMethod();
+                builder.AllowAnyHeader();
+            });
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"));
             app.ApplicationServices.GetAutofacRoot();
 
             app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

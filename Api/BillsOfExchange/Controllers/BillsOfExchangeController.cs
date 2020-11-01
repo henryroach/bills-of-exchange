@@ -21,7 +21,7 @@ namespace BillsOfExchange.Controllers
         }
 
         [HttpGet("get")]
-        public PagedResultDto<BillOfExchangeDto> Get(PagedRequestDto request) =>
+        public PagedResultDto<BillOfExchangeDto> Get([FromRoute] PagedRequestDto request) =>
             _billsOfExchangeService.GetList(request);
 
         [HttpGet("getByDrawerId")]
