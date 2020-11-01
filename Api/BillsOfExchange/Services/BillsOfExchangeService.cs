@@ -66,11 +66,6 @@ namespace BillsOfExchange.Services
                     throw new RecordNotFoundException($"Can't find bill of exchange with id {id}");
                 }
 
-                if (billOfExchange.DrawerId == billOfExchange.BeneficiaryId)
-                {
-                    throw new ApplicationException("Bill of exchange has same drawer as beneficiary.");
-                }
-
                 return billOfExchange;
             }
             catch (InvalidOperationException)

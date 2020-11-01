@@ -20,6 +20,11 @@ namespace BillsOfExchange.Services
         public LinkedList<Endorsement> GetEndorsements(int billId)
         {
             var billOfExchange = _billsOfExchangeService.GetById(billId);
+            if (billOfExchange.DrawerId == billOfExchange.BeneficiaryId)
+            {
+                throw new ApplicationException("Bill of exchange has same drawer as beneficiary.");
+            }
+
             var endorsements = _repository.GetByBillIds(new[] { billId }).First().ToList();
             var list = new LinkedList<Endorsement>();
             Endorsement currentEndorsement = null;

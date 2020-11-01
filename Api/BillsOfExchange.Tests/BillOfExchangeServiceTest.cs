@@ -8,7 +8,7 @@ namespace BillsOfExchange.Tests
 {
     public class BillOfExchangeServiceTest
     {
-        private BillsOfExchangeService _billsOfExchangeService;
+        private readonly BillsOfExchangeService _billsOfExchangeService;
 
         public BillOfExchangeServiceTest()
         {
@@ -40,7 +40,16 @@ namespace BillsOfExchange.Tests
         public void GetByBeneficiaryIdTest()
         {
             var result = _billsOfExchangeService.GetByBeneficiaryId(9);
+            Assert.AreEqual(2, result.Count());
+        }
 
+        [Test]
+        public void GetByIdTest()
+        {
+            Assert.Throws<RecordNotFoundException>(() => _billsOfExchangeService.GetById(-1));
+
+            var billOfExchange = _billsOfExchangeService.GetById(1);
+            Assert.AreEqual(1, billOfExchange.Id);
         }
     }
 }
