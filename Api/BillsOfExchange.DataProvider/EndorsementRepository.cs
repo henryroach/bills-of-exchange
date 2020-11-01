@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Autofac.Extras.DynamicProxy;
 using BillsOfExchange.DataProvider.Extensions;
 using BillsOfExchange.DataProvider.Models;
 using Newtonsoft.Json;
 
 namespace BillsOfExchange.DataProvider
 {
+    [Intercept(typeof(LogInterceptor))]
     public class EndorsementRepository: IEndorsementRepository
     {
         private static readonly Lazy<Endorsement[]> _endorsements = new Lazy<Endorsement[]>(() =>

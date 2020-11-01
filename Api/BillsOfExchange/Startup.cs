@@ -1,3 +1,8 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Autofac.Extras.DynamicProxy;
+using BillsOfExchange.DataProvider;
+using BillsOfExchange.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +24,21 @@ namespace BillsOfExchange
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddLogging();
+            services.AddAutofac(ConfigureContainer);
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterType<LogInterceptor>();
+
+            builder.RegisterType<PartyRepository>().As<IPartyRepository>().EnableInterfaceInterceptors();
+            builder.RegisterType<BillOfExchangeRepository>().As<IBillOfExchangeRepository>().EnableInterfaceInterceptors();
+            builder.RegisterType<EndorsementRepository>().As<IEndorsementRepository>().EnableInterfaceInterceptors();
+
+            builder.RegisterType<BillsOfExchangeService>().As<IBillsOfExchangeService>();
+            builder.RegisterType<EndorsementService>().As<IEndorsementService>();
+            builder.RegisterType<PartyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -26,13 +46,14 @@ namespace BillsOfExchange
         {
             if (env.IsDevelopment())
             {
+                app.UseMiddleware<RequestLoggingMiddleware>();
                 app.UseDeveloperExceptionPage();
             }
 
+            app.ApplicationServices.GetAutofacRoot();
+
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -1,11 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BillsOfExchange.Dto;
+using BillsOfExchange.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BillsOfExchange.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PartyController: ControllerBase
+    public class PartyController : ControllerBase
     {
-        
+        private readonly PartyService _billsOfExchangeService;
+
+        public PartyController(PartyService billsOfExchangeService)
+        {
+            _billsOfExchangeService = billsOfExchangeService;
+        }
+
+        [HttpGet]
+        public PagedResultDto<PartyDto> GetParties(PagedRequestDto request)
+        {
+            return _billsOfExchangeService.GetList(request);
+        }
     }
 }

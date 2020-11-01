@@ -7,6 +7,8 @@ namespace BillsOfExchange.DataProvider
     {
         IEnumerable<Party> Get(int take, int skip);
 
+        int Count();
+
         IReadOnlyList<Party> GetByIds(IReadOnlyList<int> ids);
     }
 }
