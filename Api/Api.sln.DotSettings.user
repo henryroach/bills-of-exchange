@@ -1,0 +1,26 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=33a39010_002D0fd3_002D4608_002D89de_002De120edd8191f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetByDrawerIdTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.BillOfExchangeServiceTest.GetByDrawerIdTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.BillOfExchangeServiceTest.GetByIdTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.EndorsementServiceTest.GetEndorsementTest_CircleReference&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.BillOfExchangeServiceTest.GetByBeneficiaryIdTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.EndorsementServiceTest.GetEndorsementTest_SameNewBeneficiary&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=90b5dd11_002Df427_002D4533_002D85db_002D2c067da6379b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetEndorsementTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.EndorsementServiceTest.GetEndorsementTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.EndorsementServiceTest.GetEndorsementTest_SameDrawerBeneficiary&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.EndorsementServiceTest.GetEndorsementTest_CircleReference&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.EndorsementServiceTest.GetEndorsementTest_MultiplePreviousNull&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.EndorsementServiceTest.GetEndorsementTest_SameBeneficiaryAsNewBeneficiary&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.EndorsementServiceTest.GetEndorsementTest_SameNewBeneficiary&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.BillOfExchangeServiceTest.GetListTest_Null&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.BillOfExchangeServiceTest.GetByDrawerIdTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.BillOfExchangeServiceTest.GetByDrawerIdTest_Null&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.BillOfExchangeServiceTest.GetByBeneficiaryIdTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::0454ECCF-D1F3-4131-9C04-08654B723D9E::.NETCoreApp,Version=v3.1::BillsOfExchange.Tests.BillOfExchangeServiceTest.GetByIdTest&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
