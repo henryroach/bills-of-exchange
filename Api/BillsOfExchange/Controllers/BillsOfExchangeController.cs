@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using BillsOfExchange.DataProvider.Models;
 using BillsOfExchange.Dto;
 using BillsOfExchange.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +33,6 @@ namespace BillsOfExchange.Controllers
             _billsOfExchangeService.GetByBeneficiaryId(beneficiaryId);
 
         [HttpGet("getEndorsement")]
-        public LinkedList<Endorsement> GetEndorsements(int billId) => _endorsementService.GetEndorsements(billId);
+        public IEnumerable<EndorsementDto> GetEndorsements(int billId) => _endorsementService.GetEndorsements(billId);
     }
 }

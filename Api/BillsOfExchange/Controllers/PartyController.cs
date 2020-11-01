@@ -15,7 +15,7 @@ namespace BillsOfExchange.Controllers
             _billsOfExchangeService = billsOfExchangeService;
         }
 
-        [HttpGet]
+        [HttpGet("get")]
         public PagedResultDto<PartyDto> GetParties(PagedRequestDto request)
         {
             return _billsOfExchangeService.GetList(request);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BillsOfExchange.DataProvider;
 using BillsOfExchange.DataProvider.Models;
+using BillsOfExchange.Dto;
 
 namespace BillsOfExchange.Services
 {
@@ -17,7 +18,7 @@ namespace BillsOfExchange.Services
             _billsOfExchangeService = billsOfExchangeService;
         }
 
-        public LinkedList<Endorsement> GetEndorsements(int billId)
+        public IEnumerable<EndorsementDto> GetEndorsements(int billId)
         {
             var billOfExchange = _billsOfExchangeService.GetById(billId);
             if (billOfExchange.DrawerId == billOfExchange.BeneficiaryId)
@@ -50,13 +51,18 @@ namespace BillsOfExchange.Services
                 list.AddLast(currentEndorsement);
             }
 
+            if (list.Count != endorsements.Count)
+            {
+                throw new ApplicationException("List of endorsement is not linked.");
+            }
+
             var newBeneficiaries = list.Select(x => x.NewBeneficiaryId).ToList();
             if (newBeneficiaries.Count() != newBeneficiaries.Distinct().Count())
             {
                 throw new ApplicationException("Indosament data inconsistenci - same new beneficiary id");
             }
 
-            return list;
+            return MapToDto(list);
         }
 
         private Endorsement GetFirstEndorsement(List<Endorsement> endorsements)
@@ -68,6 +74,20 @@ namespace BillsOfExchange.Services
             catch (InvalidOperationException e)
             {
                 throw new ApplicationException("Indosament data inconsistency - two first endorsements");
+            }
+        }
+
+        private IEnumerable<EndorsementDto> MapToDto(LinkedList<Endorsement> endorsements)
+        {
+            foreach (var e in endorsements)
+            {
+                yield return new EndorsementDto
+                {
+                    Id = e.Id,
+                    BillId = e.BillId,
+                    NewBeneficiaryId = e.NewBeneficiaryId,
+                    PreviousEndorsementId = e.PreviousEndorsementId
+                };
             }
         }
     }

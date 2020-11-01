@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using BillsOfExchange.DataProvider.Models;
+using BillsOfExchange.Dto;
 
 namespace BillsOfExchange.Services
 {
     public interface IEndorsementService
     {
-        LinkedList<Endorsement> GetEndorsements(int billId);
+        IEnumerable<EndorsementDto> GetEndorsements(int billId);
     }
 }

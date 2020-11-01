@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using System.Xml.XPath;
 using BillsOfExchange.DataProvider;
 using BillsOfExchange.DataProvider.Models;
 using BillsOfExchange.Dto;
