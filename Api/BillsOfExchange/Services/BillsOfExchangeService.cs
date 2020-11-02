@@ -12,13 +12,16 @@ namespace BillsOfExchange.Services
     {
         private readonly IBillOfExchangeRepository _repository;
         private readonly IEndorsementRepository _endorsementRepository;
+        private readonly PartyService _partyService;
 
         public BillsOfExchangeService(
             IBillOfExchangeRepository repository,
-            IEndorsementRepository endorsementRepository)
+            IEndorsementRepository endorsementRepository,
+            PartyService partyService)
         {
             _repository = repository;
             _endorsementRepository = endorsementRepository;
+            _partyService = partyService;
         }
 
         public PagedResultDto<BillOfExchangeDto> GetList(PagedRequestDto request)
@@ -28,15 +31,19 @@ namespace BillsOfExchange.Services
                 request = new PagedRequestDto { Skip = 0, Take = 10 };
             }
 
-            var list = _repository.Get(request.Take, request.Skip).ToList();
-
-            var result = new PagedResultDto<BillOfExchangeDto>();
-            if (list.Any())
+            var count = _repository.Count();
+            if (count == 0)
             {
-                result.Data = MapToDto(list);
+                return new PagedResultDto<BillOfExchangeDto>();
             }
 
-            return result;
+            var list = _repository.Get(request.Take, request.Skip).ToList();
+
+            return new PagedResultDto<BillOfExchangeDto>
+            {
+                Count = count,
+                Data = MapToDto(list)
+            };
         }
 
         public IEnumerable<BillOfExchangeDto> GetByDrawerId(int drawerId)
@@ -49,13 +56,13 @@ namespace BillsOfExchange.Services
         {
             var billsOfExchange = _repository.GetByBeneficiaryIds(new[] { beneficiaryId }).FirstOrDefault();
             var billsIds = _endorsementRepository.GetByNewBeneficiaryIds(new[] { beneficiaryId }).SelectMany(
-                x => x.Where(y => y.PreviousEndorsementId == null).Select(y => y.BillId))
+                    x => x.Where(y => y.PreviousEndorsementId == null).Select(y => y.BillId))
                 .Distinct().ToImmutableList();
 
             return MapToDto((billsOfExchange ?? new List<BillOfExchange>()).Concat(_repository.GetByIds(billsIds)));
         }
 
-        public BillOfExchange GetById(int id)
+        public BillOfExchangeDetailDto GetById(int id)
         {
             try
             {
@@ -65,7 +72,18 @@ namespace BillsOfExchange.Services
                     throw new RecordNotFoundException($"Can't find bill of exchange with id {id}");
                 }
 
-                return billOfExchange;
+                var parties = _partyService.GetByIds(new[] { billOfExchange.DrawerId, billOfExchange.BeneficiaryId })
+                    .ToList();
+
+                return new BillOfExchangeDetailDto
+                {
+                    Id = billOfExchange.Id,
+                    DrawerId = billOfExchange.DrawerId,
+                    BeneficiaryId = billOfExchange.BeneficiaryId,
+                    Amount = billOfExchange.Amount,
+                    Drawer = parties.First(),
+                    FirstBeneficiary = parties.Last()
+                };
             }
             catch (InvalidOperationException)
             {
@@ -73,7 +91,7 @@ namespace BillsOfExchange.Services
             }
         }
 
-        private IEnumerable<BillOfExchangeDto> MapToDto(IEnumerable<BillOfExchange> billsOfExchange)
+        private static IEnumerable<BillOfExchangeDto> MapToDto(IEnumerable<BillOfExchange> billsOfExchange)
         {
             foreach (var boe in billsOfExchange)
             {

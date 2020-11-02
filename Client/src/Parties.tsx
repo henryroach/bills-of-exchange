@@ -1,10 +1,6 @@
-import React, { useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
+import NotImplemented from './NotImplemented'
 
 export const Parties = () => {
-    useEffect(() => {
-
-    }, [])
-
-    return <div>parties</div>
+  return <NotImplemented />
 }

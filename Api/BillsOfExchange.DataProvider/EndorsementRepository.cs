@@ -10,13 +10,14 @@ using Newtonsoft.Json;
 namespace BillsOfExchange.DataProvider
 {
     [Intercept(typeof(LogInterceptor))]
-    public class EndorsementRepository: IEndorsementRepository
+    public class EndorsementRepository : IEndorsementRepository
     {
-        private static readonly Lazy<Endorsement[]> _endorsements = new Lazy<Endorsement[]>(() =>
-        {
-            string json = File.ReadAllText("Data/Endorsements.json");
-            return JsonConvert.DeserializeObject<IEnumerable<Endorsement>>(json).ToArray();
-        });
+        private static readonly Lazy<Endorsement[]> _endorsements = new Lazy<Endorsement[]>(
+            () =>
+            {
+                string json = File.ReadAllText("Data/Endorsements.json");
+                return JsonConvert.DeserializeObject<IEnumerable<Endorsement>>(json).ToArray();
+            });
 
         public IEnumerable<Endorsement> Get(int take, int skip)
             => _endorsements.Value.Skip(skip).Take(take);
@@ -30,7 +31,8 @@ namespace BillsOfExchange.DataProvider
                 .SortBySequence(billIds, lookup => lookup.Key).ToArray();
 
         public IReadOnlyList<IEnumerable<Endorsement>> GetByNewBeneficiaryIds(IReadOnlyList<int> beneficiaryIds)
-            => _endorsements.Value.Where(item => beneficiaryIds.Contains(item.NewBeneficiaryId)).ToLookup(item => item.NewBeneficiaryId)
+            => _endorsements.Value.Where(item => beneficiaryIds.Contains(item.NewBeneficiaryId))
+                .ToLookup(item => item.NewBeneficiaryId)
                 .SortBySequence(beneficiaryIds, lookup => lookup.Key).ToArray();
     }
 }

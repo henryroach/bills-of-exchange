@@ -12,7 +12,9 @@ namespace BillsOfExchange.Tests
 
         public BillOfExchangeServiceTest()
         {
-            _billsOfExchangeService = new BillsOfExchangeService(new BillOfExchangeRepository(), new EndorsementRepository());
+            _billsOfExchangeService = new BillsOfExchangeService(
+                new BillOfExchangeRepository(),
+                new EndorsementRepository(), new PartyService(new PartyRepository()));
         }
 
         [Test]

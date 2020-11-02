@@ -1,11 +1,11 @@
-const path = require("path");
+const path = require('path')
 
 module.exports = {
-  entry: ["./index.tsx"],
+  entry: ['./index.tsx'],
   devtool: 'inline-source-map',
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "index.js",
+    path: path.resolve(__dirname, 'public'),
+    filename: 'index.js',
   },
   module: {
     rules: [
@@ -17,16 +17,20 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
-      }
+      },
     ],
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   devServer: {
-    contentBase: "public",
+    open: true,
+    openPage: 'billsOfExchange',
+    historyApiFallback: true,
+    hot: true,
+    contentBase: 'public',
     compress: true,
-    publicPath: "/",
+    publicPath: '/',
     port: 9000,
   },
-};
+}

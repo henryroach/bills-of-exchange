@@ -21,8 +21,12 @@ namespace BillsOfExchange.Controllers
         }
 
         [HttpGet("get")]
-        public PagedResultDto<BillOfExchangeDto> Get([FromRoute] PagedRequestDto request) =>
+        public PagedResultDto<BillOfExchangeDto> Get([FromQuery] PagedRequestDto request) =>
             _billsOfExchangeService.GetList(request);
+
+        [HttpGet("getById/{id}")]
+        public BillOfExchangeDetailDto GetById([FromRoute] int id) =>
+            _billsOfExchangeService.GetById(id);
 
         [HttpGet("getByDrawerId")]
         public IEnumerable<BillOfExchangeDto> GetByDrawerId(int drawerId) =>
@@ -32,7 +36,7 @@ namespace BillsOfExchange.Controllers
         public IEnumerable<BillOfExchangeDto> GetByBeneficiaryId(int beneficiaryId) =>
             _billsOfExchangeService.GetByBeneficiaryId(beneficiaryId);
 
-        [HttpGet("getEndorsement")]
+        [HttpGet("getEndorsement/{billId}")]
         public IEnumerable<EndorsementDto> GetEndorsements(int billId) => _endorsementService.GetEndorsements(billId);
     }
 }

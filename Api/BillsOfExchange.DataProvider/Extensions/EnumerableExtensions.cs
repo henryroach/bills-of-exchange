@@ -15,8 +15,10 @@ namespace BillsOfExchange.DataProvider.Extensions
         /// <param name="sequence"></param>
         /// <param name="selector"></param>
         /// <returns></returns>
-        public static IEnumerable<TElement> SortBySequence<TElement, TSequence>(this IEnumerable<TElement> source,
-            IEnumerable<TSequence> sequence, Func<TElement, TSequence> selector)
+        public static IEnumerable<TElement> SortBySequence<TElement, TSequence>(
+            this IEnumerable<TElement> source,
+            IEnumerable<TSequence> sequence,
+            Func<TElement, TSequence> selector)
         {
             if (source == null) throw new ArgumentNullException(nameof(source));
             if (sequence == null) throw new ArgumentNullException(nameof(sequence));

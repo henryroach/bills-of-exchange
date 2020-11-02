@@ -1,5 +1,8 @@
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using BillsOfExchange.DataProvider;
+using BillsOfExchange.DataProvider.Models;
 using BillsOfExchange.Dto;
 
 namespace BillsOfExchange.Services
@@ -20,13 +23,29 @@ namespace BillsOfExchange.Services
             var result = new PagedResultDto<PartyDto>();
             if (list.Any())
             {
-                foreach (var item in list)
-                {
-                    result.Data.Append(new PartyDto { Id = item.Id, Name = item.Name });
-                }
+                result.Data = MapToDto(list);
             }
 
             return result;
+        }
+
+        public IEnumerable<PartyDto> GetByIds(IEnumerable<int> ids)
+        {
+            var list = _repository.GetByIds(new ReadOnlyCollection<int>(new List<int>(ids))).ToList();
+
+            return MapToDto(list);
+        }
+
+        private static IEnumerable<PartyDto> MapToDto(IEnumerable<Party> parties)
+        {
+            foreach (var p in parties)
+            {
+                yield return new PartyDto
+                {
+                    Id = p.Id,
+                    Name = p.Name
+                };
+            }
         }
     }
 }

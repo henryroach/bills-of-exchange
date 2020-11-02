@@ -6,7 +6,7 @@ namespace BillsOfExchange.Services
 {
     public interface IBillsOfExchangeService : IPagedService<BillOfExchangeDto>
     {
-        BillOfExchange GetById(int id);
+        BillOfExchangeDetailDto GetById(int id);
 
         IEnumerable<BillOfExchangeDto> GetByDrawerId(int drawerId);
 

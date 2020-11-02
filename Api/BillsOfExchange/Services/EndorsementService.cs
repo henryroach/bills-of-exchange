@@ -85,7 +85,7 @@ namespace BillsOfExchange.Services
                 {
                     Id = e.Id,
                     BillId = e.BillId,
-                    NewBeneficiaryId = e.NewBeneficiaryId,
+                    NewBeneficiary = e.NewBeneficiaryId,
                     PreviousEndorsementId = e.PreviousEndorsementId
                 };
             }

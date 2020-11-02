@@ -16,7 +16,7 @@ namespace BillsOfExchange.Tests
         {
             _billOfExchangeRepository = new BillOfExchangeRepository();
             _endorsementRepository = new EndorsementRepository();
-            _billsOfExchangeService = new BillsOfExchangeService(_billOfExchangeRepository, _endorsementRepository);
+            _billsOfExchangeService = new BillsOfExchangeService(_billOfExchangeRepository, _endorsementRepository, new PartyService(new PartyRepository()));
 
             _endorsementService = new EndorsementService(new EndorsementRepository(), _billsOfExchangeService);
         }

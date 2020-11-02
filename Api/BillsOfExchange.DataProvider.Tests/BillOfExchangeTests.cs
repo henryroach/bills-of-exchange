@@ -11,7 +11,7 @@ namespace BillsOfExchange.DataProvider.Tests
         public void BillOfExchangeRepository_Get()
         {
             BillOfExchangeRepository sut = new BillOfExchangeRepository();
-            
+
             BillOfExchange[] result1 = sut.Get(10, 0).ToArray();
             BillOfExchange[] result2 = sut.Get(10, 5).ToArray();
 
@@ -25,11 +25,12 @@ namespace BillsOfExchange.DataProvider.Tests
 
             IReadOnlyList<BillOfExchange> result = sut.GetByIds(new int[] { 6, 7, 8 });
 
-            Assert.Multiple(() =>
-            {
-                Assert.AreEqual(6, result.First().Id);
-                Assert.AreEqual(8, result.Last().Id);
-            });
+            Assert.Multiple(
+                () =>
+                {
+                    Assert.AreEqual(6, result.First().Id);
+                    Assert.AreEqual(8, result.Last().Id);
+                });
         }
 
         [Test]
@@ -39,11 +40,12 @@ namespace BillsOfExchange.DataProvider.Tests
 
             IReadOnlyList<IEnumerable<BillOfExchange>> result = sut.GetByDrawerIds(new int[] { 14, 9 });
 
-            Assert.Multiple(() =>
-            {
-                Assert.AreEqual(1, result.First().Count());
-                Assert.AreEqual(2, result.Last().Count());
-            });
+            Assert.Multiple(
+                () =>
+                {
+                    Assert.AreEqual(1, result.First().Count());
+                    Assert.AreEqual(2, result.Last().Count());
+                });
         }
 
         [Test]

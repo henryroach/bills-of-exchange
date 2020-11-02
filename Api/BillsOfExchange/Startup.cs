@@ -53,11 +53,13 @@ namespace BillsOfExchange
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(builder => {
-                builder.AllowAnyOrigin();
-                builder.AllowAnyMethod();
-                builder.AllowAnyHeader();
-            });
+            app.UseCors(
+                builder =>
+                {
+                    builder.AllowAnyOrigin();
+                    builder.AllowAnyMethod();
+                    builder.AllowAnyHeader();
+                });
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"));
             app.ApplicationServices.GetAutofacRoot();

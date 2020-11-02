@@ -5,6 +5,8 @@ namespace BillsOfExchange.DataProvider
 {
     public interface IBillOfExchangeRepository
     {
+        int Count();
+
         IEnumerable<BillOfExchange> Get(int take, int skip);
 
         IReadOnlyList<BillOfExchange> GetByIds(IReadOnlyList<int> ids);

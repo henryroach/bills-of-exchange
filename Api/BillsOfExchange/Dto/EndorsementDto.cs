@@ -6,7 +6,7 @@ namespace BillsOfExchange.Dto
 
         public int BillId { get; set; }
 
-        public int NewBeneficiaryId { get; set; }
+        public int NewBeneficiary { get; set; }
 
         public int? PreviousEndorsementId { get; set; }
     }

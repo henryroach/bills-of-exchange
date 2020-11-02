@@ -10,13 +10,18 @@ using Newtonsoft.Json;
 namespace BillsOfExchange.DataProvider
 {
     [Intercept(typeof(LogInterceptor))]
-    public class BillOfExchangeRepository: IBillOfExchangeRepository
+    public class BillOfExchangeRepository : IBillOfExchangeRepository
     {
-        private static readonly Lazy<BillOfExchange[]> _billsOfExchange = new Lazy<BillOfExchange[]>(() =>
-        {
-            string json = File.ReadAllText("Data/BillsOfExchange.json");
-            return JsonConvert.DeserializeObject<IEnumerable<BillOfExchange>>(json).OrderBy(item => item.Id).ToArray();
-        });
+        private static readonly Lazy<BillOfExchange[]> _billsOfExchange = new Lazy<BillOfExchange[]>(
+            () =>
+            {
+                string json = File.ReadAllText("Data/BillsOfExchange.json");
+                return JsonConvert.DeserializeObject<IEnumerable<BillOfExchange>>(json).OrderBy(item => item.Id)
+                    .ToArray();
+            });
+
+        public int Count()
+            => _billsOfExchange.Value.Length;
 
         public IEnumerable<BillOfExchange> Get(int take, int skip)
             => _billsOfExchange.Value.Skip(skip).Take(take);
@@ -30,7 +35,8 @@ namespace BillsOfExchange.DataProvider
                 .SortBySequence(drawerIds, lookup => lookup.Key).ToArray();
 
         public IReadOnlyList<IEnumerable<BillOfExchange>> GetByBeneficiaryIds(IReadOnlyList<int> beneficiaryIds)
-            => _billsOfExchange.Value.Where(item => beneficiaryIds.Contains(item.BeneficiaryId)).ToLookup(item => item.BeneficiaryId)
+            => _billsOfExchange.Value.Where(item => beneficiaryIds.Contains(item.BeneficiaryId))
+                .ToLookup(item => item.BeneficiaryId)
                 .SortBySequence(beneficiaryIds, lookup => lookup.Key).ToArray();
     }
 }

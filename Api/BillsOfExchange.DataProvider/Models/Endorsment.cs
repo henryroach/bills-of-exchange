@@ -12,7 +12,7 @@
         /// Bill the endorsement is attached to
         /// </summary>
         public int BillId { get; set; }
-        
+
         /// <summary>
         /// New beneficiary entitled to the Bill
         /// </summary>
